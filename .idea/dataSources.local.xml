@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails expense_manager: development" uuid="9376c6dc-77fa-427b-b498-d082a8307ed4">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>balakarthik</user-name>
+    </data-source>
+    <data-source name="Rails expense_manager: production" uuid="f1bcc7e2-256c-4f74-a94b-0bd46b250c11">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>expense_manager</user-name>
+    </data-source>
+    <data-source name="Rails expense_manager: test" uuid="d34ca585-ee29-47bc-8c84-301f96e6662f">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>balakarthik</user-name>
+    </data-source>
+  </component>
+</project>

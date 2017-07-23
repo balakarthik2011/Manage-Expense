@@ -36,8 +36,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'jquery-rails'
+
+# materialize css
 gem 'materialize-sass'
 gem 'material_icons'
+
+# authentication
+gem 'devise'
+
 
 
 group :development, :test do
