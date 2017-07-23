@@ -9,6 +9,20 @@
   </head>
 
   <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+            <li><a href="#profile">Profile</a></li>
+        <% else %>
+            <li><a href="#aboutUs">About Us</a></li>
+            <li><a href="#signIn">Sign In /Sign Up</a></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
