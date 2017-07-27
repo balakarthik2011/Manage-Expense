@@ -1,30 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ExpenseManager</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>ExpenseManager</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+<div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+      <div>
+        <a href="#" data-activates="slide-out" class="brand-logo menu-link"><i class="material-icons">menu</i></a>
+      </div>
+          <% else %>
+      <h5 class="brand-logo">Expense Manager</h5>
+          <% end %>
+      <ul class="right">
         <% if user_signed_in? %>
             <li><a href="#profile">Profile</a></li>
         <% else %>
             <li><a href="#aboutUs">About Us</a></li>
-            <li><a href="#signIn">Sign In /Sign Up</a></li>
+            <li><a href="<%= new_user_session_path %>">Sign In /Sign Up</a></li>
         <% end %>
       </ul>
     </div>
   </nav>
+</div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+<ul id="slide-out" class="side-nav">
+  <li>
+    <div class="user-view">
+      <div class="background">
+        <img src="<%= asset_url('bg2.jpeg')%>" height="200" width="300">
+      </div>
+      <a href="#!user"><img class="circle" src="<%= asset_url('profile.svg')%>"></a>
+      <% if user_signed_in? %>
+          <a href="#!name"><span class="white-text name"></span></a>
+          <a href="#!email"><span class="white-text email"><%= current_user.email %> </span></a>
+      <% else %>
+      <% end %>
+    </div>
+  </li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+</ul>
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+
+</body>
 </html>
+
+<script>  $(".menu-link").sideNav();
+</script>
