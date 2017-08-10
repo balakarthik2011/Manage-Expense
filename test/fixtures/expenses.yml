@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  amount: 1.5
+  note: MyText
+  spent_at: 2017-08-02 22:22:39
+  user: one
+
+two:
+  title: MyString
+  amount: 1.5
+  note: MyText
+  spent_at: 2017-08-02 22:22:39
+  user: two

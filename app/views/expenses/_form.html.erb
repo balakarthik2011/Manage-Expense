@@ -1,0 +1,41 @@
+<%= form_with(model: expense, local: true) do |form| %>
+    <% if expense.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+          <ul>
+            <% expense.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+    <div class="col s10 offset-s1">
+      <div class="col s12">
+        <%= form.label :spent_for %>
+        <%= form.text_field :title, id: :expense_title, class: 'input-field' %>
+      </div>
+
+      <div class="col s6">
+        <%= form.label :amount %>
+        <%= form.text_field :amount, id: :expense_amount, class: 'input-field'%>
+      </div>
+
+      <div class="col s6">
+        <%= form.label :spent_at %>
+        <%= form.text_field :spent_at, id: :expense_spent_at, class: 'input-field datepicker' %>
+      </div>
+
+      <div class="col s12">
+        <%= form.label :note %>
+        <%= form.text_area :note, id: :expense_note, class: 'input-field validate materialize-textarea' %>
+
+      </div>
+
+
+      <button class="btn col s4 offset-s4">Save</button>
+    </div>
+    </div>
+<% end %>
