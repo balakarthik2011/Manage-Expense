@@ -1,28 +1,9 @@
 <p id="notice"><%= notice %></p>
 <div class="container row">
-  <div class=" card card-panel col s12">
+  <div class="z-depth-3 col s12 expensesContainer">
     <div class="card-title"><h5>Expenses</h5></div>
-    <div class="">
-    <table class="centered highlight" id="expenses">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Amount</th>
-        <th>Spent at</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @expenses.each do |expense| %>
-          <tr class="expense" id>
-            <td><%= expense.title %></td>
-            <td><%= expense.amount %></td>
-            <td><%= expense.spent_at.strftime("%d %b, %Y") %></td>
-          </tr>
-      <% end %>
-      </tbody>
-
-    </table>
+    <div id="expenses">
+      <%= render partial: 'expenses/expense', locals: {} %>
     </div>
     <div class="fixed-action-btn">
       <a href="#addExpense" class="btn-floating btn-large red modal-trigger"><i class="large material-icons">add</i> </a>
@@ -36,7 +17,14 @@
   <div id="addExpense" class="modal">
     <div class="modal-content">
       <h5 class="center-align" id="expenseModel">New Expense</h5>
-      <%= render partial: 'expenses/form', locals: {expense: current_user.expenses.new} %>
+      <%= render partial: 'expenses/form', locals: {expense: current_user.expenses.new(spent_at: Date.today())} %>
+    </div>
+  </div>
+
+  <div id="editExpense" class="modal">
+    <div class="modal-content">
+      <h5 class="center-align">Edit Expense</h5>
+      <div id="editExpenseModel"></div>
     </div>
   </div>
 </div>

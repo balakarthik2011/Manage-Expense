@@ -20,6 +20,9 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
+    respond_to do |format|
+      format.js { render :edit }
+    end
   end
 
   # POST /expenses
@@ -29,8 +32,10 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       if @expense.save
+        @expenses = current_user.expenses
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
+        format.js   { render 'expenses.js.erb' }
       else
         format.html { render :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
@@ -43,8 +48,10 @@ class ExpensesController < ApplicationController
   def update
     respond_to do |format|
       if @expense.update(expense_params)
+        @expenses = current_user.expenses
         format.html { redirect_to @expense, notice: 'Expense was successfully updated.' }
         format.json { render :show, status: :ok, location: @expense }
+        format.js   { render 'expenses.js.erb' }
       else
         format.html { render :edit }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
@@ -56,9 +63,11 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1.json
   def destroy
     @expense.destroy
+    @expenses = current_user.expenses
     respond_to do |format|
       format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
+      format.js   { render 'expenses.js.erb' }
     end
   end
 

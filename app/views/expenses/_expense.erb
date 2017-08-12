@@ -1,0 +1,31 @@
+<table class=" bordered centered highlight">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Amount</th>
+    <th>Spent at</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @expenses.each do |expense| %>
+      <tr class="expense" id>
+        <td><%= expense.title %></td>
+        <td><%= expense.amount %></td>
+        <td>
+          <%= expense.spent_at.strftime("%d %b, %Y") %></td>
+        <td>
+          <a class='dropdown-button' data-beloworigin="true" href='#' data-activates="dropdown<%= expense.id %>">
+            <i class="material-icons pull">more_vert</i>
+          </a>
+          <ul id="dropdown<%= expense.id %>" class='dropdown-content'>
+            <li><%= link_to "Edit" , edit_expense_path(expense), remote: true %></li>
+            <li><%= link_to "Delete", expense_path(expense), method: :delete, remote: true, data: { confirm: "Are you sure to delete this expense?" } %></li>
+          </ul>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
