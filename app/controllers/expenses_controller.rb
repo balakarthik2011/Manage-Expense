@@ -16,6 +16,9 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = current_user.expenses.new
+    respond_to do |format|
+      format.js { render :new }
+    end
   end
 
   # GET /expenses/1/edit
@@ -55,6 +58,7 @@ class ExpensesController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.js   { render 'error.js.erb' }
       end
     end
   end

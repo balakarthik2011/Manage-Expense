@@ -1,8 +1,15 @@
 $('#editExpenseModel').html("<%= j render partial: 'expenses/form', locals: {expense: @expense} %>");
 $('#editExpense').modal('open');
+
 $('.datepicker').pickadate({
+    max:  true,
     selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    selectYears: true, // Creates a dropdown of 15 years to control year,
+    onStart: function ()
+    {
+        var date = new Date();
+        this.setDate( date.getFullYear(), date.getMonth() + 1, date.getDate() )
+    },
     today: 'Today',
     clear: 'Clear',
     close: 'Ok',

@@ -6,7 +6,7 @@
       <%= render partial: 'expenses/expense', locals: {} %>
     </div>
     <div class="fixed-action-btn">
-      <a href="#addExpense" class="modal-trigger">New Expense</a>
+      <%= link_to "New Expense", new_expense_path, remote: true %>
     </div>
 
   </div>
@@ -17,7 +17,6 @@
   <div id="addExpense" class="modal">
     <div class="modal-content">
       <h5 class="center-align" id="expenseModel">New Expense</h5>
-      <%= render partial: 'expenses/form', locals: {expense: current_user.expenses.new(spent_at: Date.today())} %>
     </div>
   </div>
 
@@ -31,16 +30,21 @@
 <script>
 
     $(document).on('turbolinks:load, ready', function() {
-        alert("vsdjvl");
         $('.modal').modal();
 
         $('.datepicker').pickadate({
+            max:  true,
             selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            selectYears: true, // Creates a dropdown of 15 years to control year,
+            onStart: function ()
+            {
+                var date = new Date();
+                this.setDate( date.getFullYear(), date.getMonth() + 1, date.getDate() )
+            },
             today: 'Today',
             clear: 'Clear',
             close: 'Ok',
-            closeOnSelect: false // Close upon selecting a date,
+            closeOnSelect: true // Close upon selecting a date,
         });
 
         $('.dropdown-button').dropdown({

@@ -1,0 +1,4 @@
+<% @expense.errors.messages.each do |key,msg| %>
+$('#expense_<%= key%>').removeClass("valid");
+$('#expense_<%= key%>').addClass("invalid");
+<% end %>

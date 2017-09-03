@@ -1,6 +1,7 @@
 <%= form_with(model: expense, local: false) do |form| %>
-    <% if expense.errors.any? %>
-        <div id="error_explanation">
+    <div id="error_explanation">
+      <% if expense.errors.any? %>
+
           <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
 
           <ul>
@@ -8,33 +9,33 @@
                 <li><%= message %></li>
             <% end %>
           </ul>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <div class="row">
-    <div class="col s10 offset-s1">
-      <div class="col s12">
-        <%= form.label :spent_for %>
-        <%= form.text_field :title, id: :expense_title, class: 'input-field' %>
+      <div class="col s10 offset-s1">
+        <div class="col s12 ">
+          <%= form.label :spent_for %>
+          <%= form.text_field :title, id: :expense_title, class: 'active' %>
+        </div>
+
+        <div class="col s6">
+          <%= form.label :amount %>
+          <%= form.number_field :amount, id: :expense_amount, min:0, class: 'active'%>
+        </div>
+        <div class="col s6">
+          <%= form.label :spent_at %>
+          <%= form.text_field :spent_at, value: '', id: :expense_spent_at, class: 'datepicker active' %>
+        </div>
+
+        <div class="col s12">
+          <%= form.label :note %>
+          <%= form.text_area :note, id: :expense_note, class: 'active validate materialize-textarea' %>
+
+        </div>
+
+
+        <button class="btn col s4 offset-s4">Save</button>
       </div>
-
-      <div class="col s6">
-        <%= form.label :amount %>
-        <%= form.number_field :amount, id: :expense_amount, min:0, class: 'input-field'%>
-      </div>
-      <div class="col s6">
-        <%= form.label :spent_at %>
-        <%= form.text_field :spent_at, value: expense.spent_at.strftime("%d %b, %Y"), id: :expense_spent_at, class: 'input-field datepicker' %>
-      </div>
-
-      <div class="col s12">
-        <%= form.label :note %>
-        <%= form.text_area :note, id: :expense_note, class: 'input-field validate materialize-textarea' %>
-
-      </div>
-
-
-      <button class="btn col s4 offset-s4">Save</button>
-    </div>
     </div>
 <% end %>
