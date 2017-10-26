@@ -10,13 +10,12 @@
     </div>
 
   </div>
-  <div class="card-action">
-    <a href="#">This is a link</a>
-  </div>
+
   <!-- Modal Structure -->
   <div id="addExpense" class="modal">
     <div class="modal-content">
-      <h5 class="center-align" id="expenseModel">New Expense</h5>
+      <h5 class="center-align">New Expense</h5>
+      <div id="expenseModel"></div>
     </div>
   </div>
 
@@ -29,7 +28,8 @@
 </div>
 <script>
 
-    $(document).on('turbolinks:load, ready', function() {
+    $(document).on('turbolinks:load', function() {
+        alert("vlsjbdkjvnksl");
         $('.modal').modal();
 
         $('.datepicker').pickadate({

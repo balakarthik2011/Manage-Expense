@@ -1,4 +1,5 @@
 <% @expense.errors.messages.each do |key,msg| %>
+$("label[for='expense_<%= key%>']").attr('data-error',"<%= msg.join(',').html_safe %>");
 $('#expense_<%= key%>').removeClass("valid");
 $('#expense_<%= key%>').addClass("invalid");
 <% end %>

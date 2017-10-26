@@ -5,6 +5,6 @@ class Expense < ApplicationRecord
 
 
   # ===================== Validations =======================
-  validates_presence_of :title, :amount, :spent_at
+  validates_presence_of :spent_for, :amount, :spent_at
 
 end

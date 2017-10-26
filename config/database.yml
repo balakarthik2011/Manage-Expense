@@ -68,5 +68,5 @@ test:
 production:
   <<: *default
   database: expense_manager_production
-  username: expense_manager
-  password: <%= ENV['expense_manager_DATABASE_PASSWORD'] %>
+  username: balakarthik
+#  password: <%= ENV['expense_manager_DATABASE_PASSWORD'] %>

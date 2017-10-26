@@ -42,6 +42,7 @@ class ExpensesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.js   { render 'error.js.erb' }
       end
     end
   end
@@ -83,6 +84,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:title, :amount, :note, :spent_at)
+      params.require(:expense).permit(:spent_for, :amount, :note, :spent_at)
     end
 end

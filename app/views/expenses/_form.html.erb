@@ -14,24 +14,23 @@
 
     <div class="row">
       <div class="col s10 offset-s1">
-        <div class="col s12 ">
-          <%= form.label :spent_for %>
-          <%= form.text_field :title, id: :expense_title, class: 'active' %>
+        <div class="input-field col s12 ">
+          <%= form.text_field :spent_for, id: :expense_spent_for, class: 'validate' %>
+          <%= form.label :spent_for, class: 'active' %>
         </div>
 
-        <div class="col s6">
-          <%= form.label :amount %>
-          <%= form.number_field :amount, id: :expense_amount, min:0, class: 'active'%>
+        <div class="input-field col s6">
+          <%= form.number_field :amount, id: :expense_amount, min:0, class: 'active validate'%>
+          <%= form.label :amount, class: 'active' %>
         </div>
-        <div class="col s6">
-          <%= form.label :spent_at %>
-          <%= form.text_field :spent_at, value: '', id: :expense_spent_at, class: 'datepicker active' %>
+        <div class="input-field col s6">
+          <%= form.text_field :spent_at, id: :expense_spent_at, class: 'datepicker active validate' %>
+          <%= form.label :spent_at, class: 'active' %>
         </div>
 
-        <div class="col s12">
-          <%= form.label :note %>
+        <div class="input-field col s12">
           <%= form.text_area :note, id: :expense_note, class: 'active validate materialize-textarea' %>
-
+          <%= form.label :note, class: 'active' %>
         </div>
 
 
